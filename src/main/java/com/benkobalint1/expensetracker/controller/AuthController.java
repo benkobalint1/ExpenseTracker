@@ -1,5 +1,7 @@
 package com.benkobalint1.expensetracker.controller;
 
+import com.benkobalint1.expensetracker.dto.LoginRequestDto;
+import com.benkobalint1.expensetracker.dto.LoginResponseDto;
 import com.benkobalint1.expensetracker.dto.RegisterRequestDto;
 import com.benkobalint1.expensetracker.service.UserService;
 import jakarta.validation.Valid;
@@ -34,5 +36,13 @@ public class AuthController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(Map.of("message", "Registration successful"));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDto> login(
+            @Valid @RequestBody LoginRequestDto request) {
+
+        LoginResponseDto response = userService.login(request);
+        return ResponseEntity.ok(response);
     }
 }

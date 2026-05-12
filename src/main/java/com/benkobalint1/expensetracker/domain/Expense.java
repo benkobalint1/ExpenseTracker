@@ -21,7 +21,7 @@ public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(nullable = false,precision = 19, scale = 4)
     private BigDecimal amount;
